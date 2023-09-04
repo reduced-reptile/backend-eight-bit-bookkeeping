@@ -1,0 +1,54 @@
+---
+title: Order example
+---
+erDiagram
+    accTitle: The company's Entity Relationship Diagram
+    accDescr {
+        A user has one or more companies 
+        A company has one or more perspectives
+        A company also has a chart of accounts
+        A perspective has one or more transactions
+        A perspective has one or more entries
+        A user has an email and password
+        A company has an id, name, and userid
+    }
+    USER ||--o{ COMPANY : ""
+    USER {
+        string email
+        string password
+    }
+    COMPANY ||--o{ PERSPECTIVE : ""
+    COMPANY {
+        string id PK
+        string name
+        string user FK
+    }
+    COMPANY ||..o{ ACCOUNT : ""
+    PERSPECTIVE ||--o{ TRANSACTION : ""
+    PERSPECTIVE {
+        string id PK
+        string name
+        string company FK
+    }
+    PERSPECTIVE ||..o{ ENTRY : ""
+    ACCOUNT {
+        string id PK
+        string name
+        string type
+        string company FK
+    }
+    TRANSACTION {
+        string id PK
+        date date
+        string memo
+        string perspective FK
+    }
+    ENTRY {
+        string id PK
+        string transaction FK
+        string perspective FK
+        string account FK
+        string currency
+        float amount
+        boolean isCredit
+    }
