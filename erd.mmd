@@ -4,7 +4,7 @@ title: Order example
 erDiagram
     accTitle: The company's Entity Relationship Diagram
     accDescr {
-        A user has one or more companies 
+        A user has one or more companies
         A company has one or more perspectives
         A company also has a chart of accounts
         A perspective has one or more transactions
@@ -14,6 +14,7 @@ erDiagram
     }
     USER ||--o{ COMPANY : ""
     USER {
+        string id PK
         string email
         string password
     }
@@ -46,7 +47,6 @@ erDiagram
     ENTRY {
         string id PK
         string transaction FK
-        string perspective FK
         string account FK
         string currency
         float amount
